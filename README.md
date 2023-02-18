@@ -7,9 +7,9 @@
 - 이론
   - 거스름돈 문제
 - 실전
-  - [동빈이의 큰 수의 법칙]()
-  - [숫자 카드게임]()
-  - [1이 될 때까지]()
+  - [동빈이의 큰 수의 법칙](https://github.com/ehgmlKim/thisiscodingtest/tree/main/CH03/2%20%ED%81%B0%20%EC%88%98%EC%9D%98%20%EB%B2%95%EC%B9%99)
+  - [숫자 카드게임](https://github.com/ehgmlKim/thisiscodingtest/tree/main/CH03/3%20%EC%88%AB%EC%9E%90%20%EC%B9%B4%EB%93%9C%20%EA%B2%8C%EC%9E%84)
+  - [1이 될 때까지](https://github.com/ehgmlKim/thisiscodingtest/tree/main/CH03/4%201%EC%9D%B4%20%EB%90%A0%20%EB%95%8C%EA%B9%8C%EC%A7%80)
 #### 4장 구현
 - 이론
   - [상하좌우]()
