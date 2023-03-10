@@ -21,5 +21,6 @@ for x in range(n):
                     if not visited[nx][ny] and arr[nx][ny] == 1:
                         arr[nx][ny] = arr[x][y] + 1
                         visited[nx][ny] = 1
-for a in arr:
-    print(a)
+#for a in arr:
+#    print(a)
+print(arr[n-1][m-1])
