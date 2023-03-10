@@ -12,10 +12,10 @@
   - [1이 될 때까지](https://github.com/ehgmlKim/thisiscodingtest/tree/main/CH03/4%201%EC%9D%B4%20%EB%90%A0%20%EB%95%8C%EA%B9%8C%EC%A7%80)
 #### 4장 구현
 - 이론
-  - [상하좌우]()
+  - [상하좌우](https://github.com/ehgmlKim/thisiscodingtest/tree/main/CH04/4-1%20%EC%83%81%ED%95%98%EC%A2%8C%EC%9A%B0)
   - [시각]()
 - 실전
-  - [왕실의 나이트]()
+  - [왕실의 나이트](https://github.com/ehgmlKim/thisiscodingtest/tree/main/CH04/2%20%EC%99%95%EC%8B%A4%EC%9D%98%20%EB%82%98%EC%9D%B4%ED%8A%B8)
   - [게임 개발]()
 #### 5장 DFS/BFS
 #### 6장 정렬
@@ -26,7 +26,7 @@
 
 ---
 ### ✅커밋 규칙
-페이지 번호 / 문제 번호 / 문제 이름 / 
+페이지 번호 / 문제 번호 / 문제 이름 / 난이도
 
 ### BOOK
 ![https://product.kyobobook.co.kr/detail/S000001810273](https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791162243077.jpg)
