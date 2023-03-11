@@ -57,6 +57,36 @@ print(arr[n-1][m-1])
 해당 코드는 오른쪽 아래로만 이동하는 미로의 경우 정답을 출력한다.
 하지만 더 이상 길이 없어 다시 돌아와야 하는 경우, 이미 방문한 위치를 제외하기 때문에 그 부분이 빼고 계산된다.
 
+### 재귀로 수정 후 맞은 풀이
+```python
+n, m = map(int, input().split())
+
+arr = [] #미로
+for _ in range(n):
+    arr.append(list(map(int, input())))
+dd = [[-1, 0], [1, 0], [0, -1], [0, 1]] #상하좌우
+
+def bfs(x, y, arr):
+    for dx, dy in dd:
+        nx = x + dx
+        ny = y + dy
+        if x==n-1 and y==m-1:
+            return
+        if 0 <= nx < n and 0 <= ny < m:  # 범위 안일 때
+            if arr[nx][ny] == 1:
+                arr[nx][ny] = arr[x][y] + 1
+                bfs(nx, ny,arr)
+bfs(0,0,arr)
+#for a in arr:
+#    print(a)
+print(arr[n-1][m-1])
+```
+너비 우선 탐색으로 풀이했다. 방문한 것을 굳이 체크할 필요가 없어서 visited를 없앴다.
+
+1. (0,0)에서 시작해서 상하좌우를 돌면서 갈 수 있으면 현재 위치까지 이동한 칸의 수에 1을 더한 값을 대입해준다.
+2. 만약 현재 방문한 위치가 출구라면 재귀를 멈춘다.
+3. 마지막 출구의 값을 출력해준다.
+
 ### 교제 답안 예시
 ```python
 from collections import deque
