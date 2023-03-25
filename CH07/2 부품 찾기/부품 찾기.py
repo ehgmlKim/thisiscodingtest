@@ -24,5 +24,6 @@ def find_one(start, end, target, have):
     else:
         find_one(mid+1, end, target, have)
 have = sorted(have)
+
 for i in range(m):
     find_one(0, n, want[i], have)
