@@ -23,12 +23,30 @@
 import sys
 input = sys.stdin.readline
 n = int(input())
-arr = []
-for _ in range(n):
-    arr.append(int(input()))
+have = list(map(int, input().split()))
+m = int(input())
+want = list(map(int, input().split()))
 
-for x in sorted(arr, reverse=True):
-    print(x, end=' ')
+#시간 초과나는 풀이
+#for w in want:
+#    if w in have:
+#        print('yes', end=' ')
+#    else:
+#        print('no', end=' ')
+def find_one(start, end, target, have):
+    if start>end:
+        print('no', end=' ')
+        return
+    mid = (start+end)//2
+    if have[mid] == target:
+        print('yes', end=' ')
+        return
+    elif have[mid]>target:
+        find_one(start, mid - 1, target, have)
+    else:
+        find_one(mid+1, end, target, have)
+have = sorted(have)
+
+for i in range(m):
+    find_one(0, n, want[i], have)
 ```
-반복문을 n만큼 반복하면서 수를 입력받아 `arr` 배열에 추가한다.<br>
-arr 배열을 내림차순을 정렬하여 하나씩 출력한다.
