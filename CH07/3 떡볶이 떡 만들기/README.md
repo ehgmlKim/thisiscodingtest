@@ -27,3 +27,31 @@
 
 ---
 ## 풀이
+```python
+import sys
+input = sys.stdin.readline
+
+n, m = map(int, input().split())
+arr = list(map(int, input().split()))
+arr.sort()
+
+
+def binary(start, end, m):
+    mid = (start + end) // 2
+    h = [t - mid for t in arr if t > mid]
+    if (start > end):
+        return end
+    if sum(h) >= m:
+        return binary(mid + 1, end, m)
+    else:
+        return binary(start, mid - 1, m)
+
+
+print(binary(1, arr[-1], m))
+```
+1. `arr` 배열에 떡들의 길이를 담는다.
+2. 배열을 정렬한다.
+3. 1부터 떡의 길이 중 가장 큰 값 사이의 범위에서 구한다.
+4. 중간값보다 큰 떡들을 골라서 그 차이를 h에 넣는다.
+5. h의 합계, 즉 잘린 떡들의 길이가 `mid`값보다 크면 더 큰 mid를 찾아보고, 
+`mid`값보다 작으면 더 작은 mid값을 찾는다.
