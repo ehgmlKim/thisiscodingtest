@@ -11,9 +11,9 @@ for _ in range(M):
     x,y,z = map(int, input().split())
     graph[x].append((y,z))
 
-print(graph)
+#print(graph)
 city = {x[0] : x[1] for x in graph[C]}
-print(city)
+#print(city)
 
 for i in range(1, N+1):
     if i in city:
@@ -23,7 +23,7 @@ for i in range(1, N+1):
                     city[node] = city[i]+dis
             else:
                 city[node] = dis
-print(city)
+#print(city)
 city_time = [x[1] for x in city.items()]
 
 print(len(city), max(city_time))
