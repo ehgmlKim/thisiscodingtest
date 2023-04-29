@@ -27,36 +27,39 @@
 ---
 ## 풀이
 ```python
-# 플로이드 워셜 알고리즘으로 풀이
 import sys
 input = sys.stdin.readline
-INF = int(1e9)
 
-# N 도시의 개수 M 통로의 개수 C 메시지를 보내고자하는 도시
-N,M,C = map(int, input().split())
+def find_parent(parent, x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent, parent[x])
+    return parent[x]
 
-graph = [[INF]*(N+1) for i in range(N+1)]
+def union_parent(parent, a, b):
+    a = find_parent(parent, a)
+    b = find_parent(parent, b)
+    if a<b:
+        parent[b] = a
+    else:
+        parent[a] = b
 
-for _ in range(M):
-    x,y,z = map(int, input().split())
-    graph[x][y] = z
+n, m = map(int, input().split())
+parent = [0] * (n+1)
 
-for i in range(1,N+1):
-    for j in range(1, N + 1):
-        for k in range(1, N + 1):
-            if graph[j][k] > graph[j][i] + graph[i][k]:
-                graph[j][k] = graph[j][i] + graph[i][k]
+#부모 테이블 상에서 부모를 자기 자신으로 초기화
+for i in range(1, n+1):
+    parent[i] = i
 
-#print(graph)
+cycle = False
 
-city_time = [x for x in graph[C] if x < INF]
-l = len(city_time)
-if l:
-    time = max(city_time)
-else: #전달할 수 있는 도시가 하나도 없을 경우에 대한 출력예시가 없어서 -1로 출력되도록 함
-    time = -1
+for i in range(m):
+    c, a, b= map(int, input().split())
+    if c == 0:
+        union_parent(parent, a, b)
+    else:
+        if find_parent(parent, a) == find_parent(parent, b):
+            print('YES')
+        else:
+            print('NO')
 
-print(l, time)
 ```
-플로이드 위셜 알고리즘으로 풀이했지만, 주어지는 값들의 조건을 보니 시간 초과로 실패할 것 같다.
-다익스트라 알고리즘을 이용해서 다시 풀이했다.
