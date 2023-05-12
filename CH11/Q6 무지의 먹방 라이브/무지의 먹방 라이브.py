@@ -1,24 +1,23 @@
-from collections import deque
+from heapq import heappush, heappop
 
 
 def solution(food_times, k):
-    answer = -1
-    idx = 0
+    # 방송 중단 전 음식을 다 먹는 경우
+    if sum(food_times) <= k:
+        return - 1
+
+    foodHeap = []
+    length = len(food_times)  # 남은 음식 개수
+    for i in range(length):
+        heappush(foodHeap, [food_times[i], i + 1]);
+
     time = 0
-    q = deque()
-    for i, t in enumerate(food_times):
-        q.append([i + 1, t])
+    while (foodHeap[0][0] - time) * length < k:
+        k -= (foodHeap[0][0] - time) * length
+        time += (foodHeap[0][0] - time)
+        length -= 1
+        heappop(foodHeap)
 
-    while time < k:
-        if food_times[idx]:
-            food_times[idx] -= 1
-            time += 1
-            # print(food_times, time, idx)
-        idx = (idx + 1) % len(food_times)
-
-    for i in range(len(food_times)):
-        if food_times[idx]:
-            answer = idx + 1
-            break
-        idx = (idx + 1) % len(food_times)
+    result = sorted(foodHeap, key=lambda x: x[1])  # index를 기준으로 heap을 다시 정렬
+    answer = result[k % length][1]
     return answer
