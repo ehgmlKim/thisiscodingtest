@@ -88,9 +88,9 @@ Empty
 따라서 주어진 문자열을 x / ababcdcd  /  ababcdcd 로 자르는 것은 불가능 합니다.<br>
 이 경우 어떻게 문자열을 잘라도 압축되지 않으므로 가장 짧은 길이는 17이 됩니다. </p>
 
-<hr>
-### 풀이
-### 틀린 풀이
+---
+## 풀이
+### ❌틀린 풀이
 2,6,11,12,14,15,17,26,27,28번 틀린 66점 풀이
 ```python
 def solution(s):
@@ -121,5 +121,40 @@ def solution(s):
             answer = temp
     return answer
 ```
+
+### 맞은 풀이
+```python
+def solution(s):
+    answer = []
+    if len(s) == 1:
+        return 1
+    for i in range(1, len(s)//2+1):
+        result = ''
+        temp = s[:i]
+        count = 1
+        for j in range(i, len(s), i):
+            if temp == s[j:i+j]:
+                count += 1
+            else:
+                if count == 1:
+                    result += temp
+                else:
+                    result += str(count) + temp
+                count = 1
+                temp = s[j:i+j]
+        if count == 1:
+            result += temp
+        else:
+            result += str(count) + temp
+        answer.append(len(result))
+    return min(answer)
+```
+
+**첫번째 풀이와 다른 점1.**
+문자열의 조각을 새로운 배열에 저장할 필요가 없음을 깨달았다.
+이미 비교한 문자열 조각을 계속 가지고 있을 필요가 없기때문에, 문자열 조각을 보관하는 배열을 삭제하고, temp와 그 다음 문자열 조각을 비교해 문자열을 압축했다.
+
+**첫번째 풀이와 다른 점2.**
+주어진 문자열의 길이의 반보다 더 긴 길이로 문자열을 자르면 나뉘어진 문자열 조각은 절대 압출될 수 없다. 따라서 문자열의 길이만큼 모두 나누어보지 않고, 1부터 문자열 길이의 반만큼만 잘라보면 된다.
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges
